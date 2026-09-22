@@ -208,20 +208,20 @@
     }
 
     function handleSearch() {
-      const query = document.getElementById('search').value.toLowerCase().trim();
-      page = 1;
+  const query = document.getElementById('search').value.toLowerCase().trim();
+  page = 1;
 
-      if (!query) {
-        filteredList = dictionaryList;
-      } else {
-        filteredList = dictionaryList.filter(item => 
-          item.word.toLowerCase().includes(query) || 
-          item.definition.toLowerCase().includes(query)
-        );
-      }
+  if (!query) {
+    filteredList = dictionaryList;
+  } else {
+    // Matches ONLY the word/title, ignoring definitions
+    filteredList = dictionaryList.filter(item => 
+      item.word.toLowerCase().includes(query)
+    );
+  }
 
-      renderResults();
-    }
+  renderResults();
+}
 
     function loadMore() {
       page++;
